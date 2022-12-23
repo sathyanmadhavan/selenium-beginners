@@ -22,11 +22,9 @@ from selenium import webdriver
 driver = webdriver.Firefox()
 # Maximize the browser window
 driver.maximize_window()
-driver.get("http://qxf2.com/selenium-tutorial-main")
+driver.get("https://edumarshal.com/?gclid=CjwKCAiAnZCdBhBmEiwA8nDQxYzQa8u5bjYvZ8gMpm43uXkWXovhfRqJp7TaInW6ebpPpQi73XzhDhoCEhoQAvD_BwE")
 
-# KEY POINT: Locate the checkbox and click on it
-checkbox = driver.find_element("xpath", "//input[@type='checkbox']")
-checkbox.click()
+check=driver.find_element("xpath","//label[@for='choice_1_6_1']").click()
 
 # Pause the script for 3 sec so you can confirm the check box was selected
 time.sleep(3)
