@@ -1,15 +1,16 @@
 """
-Selenium script that performs several common actions like:
-click button, select dropdown, enable checkbox, set text
+This test helps to fill the text
 """
 import time
 from selenium import webdriver
-def test_consolidated():
 # Create an instance of Firefox WebDriver
+def test_title():
     driver = webdriver.Firefox()
-# Maximize the browser window
-    driver.maximize_window()
+# The driver.get method will navigate to a page given by the URL
     driver.get("https://edumarshal.com/")
+# Check if the title of the page is proper
+    test_title=="Best School ERP Software | School Management Software | Edumarshal"
+    assert test_title == test_title
     name=driver.find_element("xpath","//input[@name='input_1.3']")
     name.send_keys("Sathyan")
     name=driver.find_element("xpath","//input[@name='input_1.6']")
@@ -25,25 +26,10 @@ def test_consolidated():
     number=driver.find_element("xpath","//input[@name='input_7']")
     number.send_keys("10")
     check=driver.find_element("xpath","//label[@for='choice_1_6_1']").click()
-
-# Take screenshot
-    driver.save_screenshot('School_management.png')
-
-# Identify the xpath for Click me button and click on it
     submit=driver.find_element("xpath","//input[@type='submit']")
     submit.click()
-
-# Pause the script for 3 sec
+# Sleep is one way to wait for things to load
+# Future tutorials cover explicit, implicit and ajax waits
     time.sleep(3)
-
-# Verify user is taken to  redirect url
-    if driver.current_url== 'https://edumarshal.com/':
-        print("Success")
-    else:
-        print("Failure")
-
-# Pause the script for 3 sec
-    time.sleep(5)
-
-# Close the browser
+# Close the browser window
     driver.close()

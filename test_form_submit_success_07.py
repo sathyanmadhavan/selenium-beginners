@@ -1,10 +1,9 @@
 """
-Selenium script that performs several common actions like:
-click button, select dropdown, enable checkbox, set text
+Learn to fill and submit a form with Selenium
 """
 import time
 from selenium import webdriver
-def test_consolidated():
+def test_form_submit_success():
 # Create an instance of Firefox WebDriver
     driver = webdriver.Firefox()
 # Maximize the browser window
@@ -25,25 +24,16 @@ def test_consolidated():
     number=driver.find_element("xpath","//input[@name='input_7']")
     number.send_keys("10")
     check=driver.find_element("xpath","//label[@for='choice_1_6_1']").click()
-
-# Take screenshot
-    driver.save_screenshot('School_management.png')
-
-# Identify the xpath for Click me button and click on it
     submit=driver.find_element("xpath","//input[@type='submit']")
     submit.click()
 
-# Pause the script for 3 sec
+# Wait for the new page to load
     time.sleep(3)
 
-# Verify user is taken to  redirect url
     if driver.current_url== 'https://edumarshal.com/':
         print("Success")
     else:
         print("Failure")
-
-# Pause the script for 3 sec
-    time.sleep(5)
 
 # Close the browser
     driver.close()
