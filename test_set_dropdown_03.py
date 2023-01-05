@@ -3,25 +3,25 @@ This tutorial will help to set the dropdown menu
 """
 import time
 from selenium import webdriver
-def test_dropdown():
-# Create an instance of Firefox WebDriver
-    driver = webdriver.Firefox()
-# Maximize the browser window
-    driver.maximize_window()
+class drop_down():
+    def driver(self):
+        self.driver = webdriver.Firefox()
+        self.driver.maximize_window()
+        self.driver.get("https://edumarshal.com/")
+        dropdown_element = self.driver.find_element("xpath", "//li[@id='menu-item-2365']")
+        dropdown_element.click()
+        time.sleep(1)
+        self.driver.find_element("xpath", "//span[text()='College ERP']").click()
+        time.sleep(3)
+        self.driver.close()
 
-# Navigate to  page
-    driver.get("https://edumarshal.com/")
+class client():
+    def __init__(self):
+        self.site=drop_down()
+                
+    def begin_test(self):
+        self.site.driver()
 
-# KEY POINT: Identify the dropdown and click on it
-    dropdown_element = driver.find_element("xpath", "//li[@id='menu-item-2365']")
-    dropdown_element.click()
-# Sleep is one way to pause while the page elements load
-    time.sleep(1)
-
-# KEY POINT: Locate a particular option and click on it
-    driver.find_element("xpath", "//span[text()='College ERP']").click()
-# Future tutorials cover explicit, implicit and ajax waits
-    time.sleep(3)
-
-# Close the browser window
-    driver.close()
+if __name__ == "__main__":
+        navigate=client()
+        navigate.begin_test()

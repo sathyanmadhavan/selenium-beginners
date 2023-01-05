@@ -1,21 +1,21 @@
 """
-Learn to fill and submit a form with Selenium
+Selenium script that performs several common actions like:
+click button, select dropdown, enable checkbox, set text
 """
 import time
 from selenium import webdriver
-
-class form_submit():
+class consolidated():
     def __init__(self):
 # Create an instance of Firefox WebDriver
         self.driver = webdriver.Firefox()
-    def test_form_submit(self):
+    def consolidated_test(self):
 # Maximize the browser window
         self.driver.maximize_window()
         self.driver.get("https://edumarshal.com/")
-        name=self.driver.find_element("xpath","//input[@name='input_1.3']")
-        name.send_keys("Sathyan")
-        name=self.driver.find_element("xpath","//input[@name='input_1.6']")
-        name.send_keys("Madhavan")
+        first_name=self.driver.find_element("xpath","//input[@name='input_1.3']")
+        first_name.send_keys("Sathyan")
+        last_name=self.driver.find_element("xpath","//input[@name='input_1.6']")
+        last_name.send_keys("Madhavan")
         message=self.driver.find_element("xpath","//input[@type='email']")
         message.send_keys("xxx@gmail.com")
         phone=self.driver.find_element("xpath","//input[@type='tel']")
@@ -28,19 +28,28 @@ class form_submit():
         number.send_keys("10")
         check=self.driver.find_element("xpath","//label[@for='choice_1_6_1']")
         check.click()
+
+# Take screenshot
+        self.driver.save_screenshot('School_management.png')
+
+# Identify the xpath for Click me button and click on it
         submit=self.driver.find_element("xpath","//input[@type='submit']")
         submit.click()
 
-# Wait for the new page to load
+# Pause the script for 3 sec
         time.sleep(3)
-    
+
+# Verify user is taken to  redirect url
         if self.driver.current_url== 'https://edumarshal.com/':
             print("Success")
         else:
             print("Failure")
 
-# Close the browser
-        self. driver.close()
+# Pause the script for 3 sec
+        time.sleep(5)
 
-submit_success= form_submit()
-submit_success.test_form_submit()
+# Close the browser
+        self.driver.close()
+
+cons = consolidated()
+cons.consolidated_test()
